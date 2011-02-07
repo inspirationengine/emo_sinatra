@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+	<title>EmoteThis</title>
+	<!-- Preloader -->
+	<style type="text/css">
+		HTML, BODY { height: 100%; }
+		#loading-mask {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #000000;
+			z-index: 1;
+		}
+		#loading {
+			position: absolute;
+			color: white;
+			font-size: 12px;
+			top: 40%;
+			left: 45%;
+			z-index: 2;
+		}
+		#loading #loading-message {
+			background: url('/images/browser/loader.gif') no-repeat left center;
+			padding: 5px 30px;
+			display: block;
+		}
+		#main-content{
+			display: none;
+			height: 100%;
+		}
+	</style>
+	<link rel="Shortcut Icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/css/browser.css" type="text/css">
+                            	
+</head>
+<body>
+	<div id="loading-mask"></div>
+	<div id="loading">
+		<span id="loading-message"><span id="loading-percent">5</span>% Loading. Please wait...</span>
+	</div>
+	
+	<div id="loading-win" style="display: none;">
+	</div>
+	
+	<div id="main-content">
+		<div id="header">
+		<div id="header-central">
+			<div id="short-desc">&nbsp;</div>
+		</div>
+		<div id="logo"><img src="/images/browser/emote_logo.png"></div>
+		<div id="navigation">
+		<!-- 
+			<div id="back-button">
+				<img id="back-button-on" src="/images/browser/back_button.png" usemap="#back-button-map" />
+				<map name="back-button-map">
+					<area shape="poly" coords="0,12,10,24,53,24,53,0,10,0" href="#"/>
+				</map>
+			</div>
+			<div id="next-button">
+				<img id="next-button-on" src="/images/browser/next_button.png" usemap="#next-button-map" />
+				<map name="next-button-map">
+					<area shape="poly" coords="0,0,0,24,43,24,53,12,43,0" href="#"/>
+				</map>
+			</div>
+			<div class="clear-both"></div>
+		-->
+		</div>
+		<div class="clear-both"></div>
+	</div>
+			
+		<div id="survey-area" class="blue-bg">
+				
+
+		
+			<div id="instruction-header" ><div id="instruction-header-text">Move mouse up and down near emoticon to select intensity. Click to set.</div></div>
+	<div id="slider-nav">
+		<div id="back-button">
+			<img id="back-button-on" src="/images/browser/left-arrow.png" usemap="#back-button-map">
+			<map name="back-button-map" >
+				<area shape="poly" coords="0,57,19,111,19,2" href="#"/>
+			</map>
+		</div>
+		<div id="next-button">
+			<img id="next-button-on" src="/images/browser/right-arrow.png" usemap="#next-button-map">
+			<map name="next-button-map">
+				<area shape="poly" coords="0,2,0,111,19,57" href="#"/>
+			</map>
+		</div>
+		<div id="slider" class="slider">
+			<ul>
+								<!-- Welcome page -->
+				<li id="welcome-slide">
+										<div class="short-desc-value">Welcome to e.mote&#0153;</div>
+					<div class="face-name"> &nbsp; </div>
+					<div class="instruction">
+						<div class="welcome-text">
+You are about to experience <span class="bold-text">e.mote</span>&#0153;, a new <i>(and hopefully fun!)</i> way to give feedback on people, products or services.
+							<br/><br/>
+							And no worries, your <span class="bold-text">e.mote</span>&#0153; responses are anonymous
+							 so you can express how you really feel. <br/><br/>
+							Enjoy <span class="bold-text">"e.moting!"</span>.<br/><br/>
+							<!-- The <span class="bold-text">e.mote</span>&#0153; Team. -->
+						</div>
+						<div class="welcome-start" >
+							<div id="team-text">The <span class="bold-text">e.mote&#0153;</span> Team</div>
+							<a href="#" id="get-started"><img src="/images/browser/get_started_button.png"></a>
+							<div class="clear-both"></div>
+						</div>
+					</div>
+				</li>
+								
+				
+				<!-- Page emote -->
+				
+				<li id="emote-slide">
+										<div class="short-desc-value"> Move your mouse over the face to change the emotion. Click to set. </div>
+					
+
+					<div class="instruction-emote2">
+						<div class="stimulus-short">
+							Tell us how you felt about your most recent experience with  <span class="bold-text">Testing survey xml export</span>.
+						</div> 
+					</div>
+					<div id="emote-picker" class="face-win" style="margin-top: 10px;">
+						<div id="emote-face"></div>
+						<div id="emote-mouse-follow" class="mouse-follow"></div>
+						<div class="face-shadow"></div>
+						<div id="emote-face-name" > &nbsp; </div> 
+					</div>
+				</li>
+				
+				<!-- Page intensity -->
+				
+				<li id="intensity-slide">
+										<div class="short-desc-value">Move mouse up and down near emoticon to select intensity. Click to set. </div>
+					<div id="intensity-face-name" class="face-name"> &nbsp; </div>
+
+					<div class="instruction-emote">
+						<div id="intensity-stimulus" class="stimulus-short">
+							Just how <span id="current-face-name">&nbsp;</span> did the <br/> <span class="bold-text">Testing survey xml export</span> make you feel?
+						</div> 
+					</div>
+					
+					<div id="intensity-bound-top"></div>
+					
+					<div id="intensity-picker" class="iface-win">
+						<div id="intensity-face"></div>
+						<div id="intensity-mouse-follow" class="mouse-follow"></div>
+						<div class="face-shadow"></div>
+						<div id="intensity-bg2"></div>
+					</div>
+					
+					
+					
+					<div id="intensity-bound-bottom"></div>
+					
+				</li>
+				
+				<!-- Page verbatim -->
+				
+				<li id="verbatim-slide">
+										<div class="short-desc-value"> &nbsp; </div>
+					<div class="face-name"> &nbsp; </div>
+					<div class="instruction-emote">
+						<div id="verbatim-stimulus">
+							<div id="verbatim-text">
+								You said your experience with <span class="bold-text">Testing survey xml export</span> made you feel 
+								<span id="verbatim-face-name">&nbsp;</span>. Why?
+							</div>
+							<div id="verbatim-image">
+								<img id="verbatim-image-id" src="/images/browser/small/amazed_intensity_3.png">
+							</div>
+							<div class="clear-both"></div>
+						</div>
+					</div>
+					
+					<div class="verbatim-win">
+						<div id="verbatim-textfield">
+							<form action="">
+								
+								<textarea id="verbatim-textarea" >
+								</textarea>
+																<span id="verbatim-textarea-text" style="display: none;">Because...</span>
+								<div id="verbatim-button">
+									<a id="submit-survey-data" href="#"><img src="/images/browser/verbatim_submit_button.png"></a>
+									<!--  <input type="image" src="/images/browser/verbatim_submit_button.png" /> -->
+								</div> 
+							</form>
+						</div>
+					</div>
+				</li>
+				
+								
+				
+								<!-- Thanks page -->
+				
+				<li id="thanks-slide">
+										<div class="short-desc-value"> &nbsp; </div>
+					<div class="thanks-bg-win">
+						<div class="thanks-message">
+							Thank you for e.moting!						</div>
+						<div class="close-message">
+							You may now close this browser window.
+						</div>
+					</div>
+				</li>
+				
+			</ul>	
+			
+		</div>
+		
+	<div class="clear-both"></div>
+	</div>
+		<div id="dots-nav">
+									<img id="dot-welcome" src="/images/browser/yellow_dot.png">
+									<img id="dot-emote" src="/images/browser/white_dot.png">
+									<img id="dot-intensity" src="/images/browser/white_dot.png">
+									<img id="dot-verbatim" src="/images/browser/white_dot.png">
+									<img id="dot-thanks" src="/images/browser/white_dot.png">
+					</div>
+		
+
+<div id="ajax-preloader">
+	<div id="ajax-preloader-text">Loading...</div>
+</div>		<script>
+		var preloadImages = [
+			'/images/browser/emote_logo.png',
+			'/images/browser/left-arrow.png',
+			'/images/browser/left-arrow-over.png',
+			'/images/browser/right-arrow.png',
+			'/images/browser/right-arrow-over.png',
+			'/images/browser/yellow_dot.png',
+			'/images/browser/white_dot.png',
+			'/images/browser/bg.jpg',
+			'/images/browser/left_window_background.png',
+			'/images/browser/emotion_picker_window.png',
+			'/images/browser/first_faces_transparent_bg.png',
+			'/images/browser/intensity_window_max.png',
+			'/images/browser/mouse_follow_image.png',
+			'/images/browser/emoticon_shadow.png',
+			'/images/browser/verbatim_window_background.png',
+			'/images/browser/verbatim_submit_button.png',
+			'/images/browser/thank_you_smiley.png',
+			'/images/browser/data-submit-button.png',
+			'/images/browser/demographics_page_window_background.png', 
+			'/images/browser/take_demos_yes_button.png',
+			'/images/browser/take_demos_no_button.png',
+			'/images/browser/thank_you_window.png',
+			'/images/browser/yellow_header.png'
+		];
+		</script>		
+		</div>
+	</div>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.js"></script>
+	<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="/js/jquery.preload.js"></script>
+	<script type="text/javascript" src="/js/jquery.sudoSlider.js"></script>
+	<!-- <script type="text/javascript" src="/js/curvycorners.js"></script> -->
+	<script type="text/javascript" src="/js/jquery.validate.js"></script>
+
+	<script type="text/javascript" src="survey.js"></script>
+	
+
+</body>
+</html>

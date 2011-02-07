@@ -30,7 +30,7 @@ end
 
 get '/' do
   # You can set up an index page (under the /public directory).
-  "bzz"
+  erb :'index'
 end
 
 get '/new' do
