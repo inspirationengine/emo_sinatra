@@ -14,7 +14,8 @@ rescue Bundler::GemNotFound => e
 end if File.exist?(gemfile)
 
 require 'sinatra'
-require 'harvester'
+require 'mongo_mapper'
 require 'configuration'
+require 'harvester'
 
 run Sinatra::Application

@@ -1,12 +1,8 @@
 require 'yaml'
 require 'logger'
 
-APP_CONFIG = YAML.load(File.read("#{APP_ROOT}/environments.yml"))[settings.environment]
 APP_ENV = (ENV['RACK_ENV'] || 'development').to_sym
-
-set :root, APP_ROOT
-set :static, true
-set :environment, APP_ENV
+APP_CONFIG = YAML.load(File.read("#{APP_ROOT}/environments.yml"))[APP_ENV]
 
 configure do
   log_file = File.open("#{APP_ROOT}/log/#{APP_ENV}.log", 'a+')
@@ -16,15 +12,23 @@ configure do
   #STDOUT.reopen(log_file)  # Anton, this is for logfiles fans:)  no better solution currently
   #STDERR.reopen(log_file)  # Uncomment those lines to see all the stuff in the logfile
   set :logger, logger
+
+  set :root, APP_ROOT
+  set :static, true
+  set :environment, APP_ENV
 end
 def logger; settings.logger; end
 
-enable :logging
-enable :dump_errors
+configure :development do
+  enable :logging
+  enable :dump_errors
+end
 
 
 # MongoDB configuration
-Mongoid.configure do |config|
-  #http://api.mongodb.org/ruby/current/Mongo/Connection.html#from_uri-class_method
-  config.master = Mongo::Connection.from_uri("mongodb://#{APP_CONFIG[:mongo_host]}").db(APP_CONFIG[:mongo_database])
-end
+# http://api.mongodb.org/ruby/current/Mongo/Connection.html#from_uri-class_method
+# http://www.mongodb.org/display/DOCS/Connections
+MongoMapper.connection = Mongo::Connection.from_uri("mongodb://#{APP_CONFIG[:mongo_host]}")
+MongoMapper.database = APP_CONFIG[:mongo_database]
+logger.debug MongoMapper.connection.inspect
+# MongoMapper.database.authenticate(ENV['mongodb_user'], ENV['mongodb_pass'])

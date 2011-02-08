@@ -20,20 +20,18 @@
 # and any object that inherits from Mongoid::Document
 
 class Survey
-  include Mongoid::Document
+  include MongoMapper::Document
 
   #It's still not clear to me about document IDs in mongo.... and associations o_O
 
-  field :user_id, :type => Integer
-  field :short_stimulus
-  field :score, :type => Float, :default => 0.0
-  field :responses_count, :type => Integer, :default => 0
-  field :active, :type => Boolean, :default => true
-  field :public, :type => Boolean, :default => false
-  field :created_at, :type => DateTime
-  field :updated_at, :type => DateTime
-  field :code
-  field :action_token
-  #index :code, :unique => true
+  key :user_id, Integer
+  key :short_stimulus, String, :required => true
+  key :score, Float, :default => 0.0
+  key :responses_count, Integer, :default => 0
+  key :active, Boolean, :default => true
+  key :public, Boolean, :default => false
+  key :code, String, :index => true, :required => true
+  key :action_token, String
+  timestamps!
 
 end

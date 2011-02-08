@@ -1,31 +1,27 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (2.3.10)
+    activesupport (3.0.3)
     bson (1.0.4)
     bson_ext (1.0.4)
-    durran-validatable (2.0.1)
+    i18n (0.5.0)
+    jnunemaker-validatable (1.8.4)
+      activesupport (>= 2.3.4)
     json (1.4.6)
     json (1.4.6-x86-mingw32)
     mongo (1.0.7)
       bson (>= 1.0.4)
-    mongo_ext (0.19.3)
-    mongoid (1.9.2)
-      activesupport (< 3.0.0)
-      bson (~> 1.0.1)
-      durran-validatable (>= 2.0.1)
-      mongo (~> 1.0.1)
-      will_paginate (< 2.9)
+    mongo_mapper (0.8.3)
+      activesupport (>= 2.3.4)
+      jnunemaker-validatable (~> 1.8.4)
+      plucky (~> 0.3.3)
+    plucky (0.3.4)
+      mongo (~> 1.0.7)
     rack (1.2.1)
     sinatra (1.1.2)
       rack (~> 1.1)
       tilt (~> 1.2)
-    sinatra-mongoid (0.0.2)
-      mongo_ext
-      mongoid
-      sinatra
     tilt (1.2.2)
-    will_paginate (2.3.15)
 
 PLATFORMS
   ruby
@@ -34,6 +30,7 @@ PLATFORMS
 DEPENDENCIES
   bson (= 1.0.4)
   bson_ext (= 1.0.4)
+  i18n
   json (= 1.4.6)
+  mongo_mapper
   sinatra (= 1.1.2)
-  sinatra-mongoid
