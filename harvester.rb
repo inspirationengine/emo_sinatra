@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'mongoid'
-require 'configuration'
 require 'erb'
 Dir["#{APP_ROOT}/models/*.rb"].each {|model| require model }
 
@@ -10,9 +9,21 @@ helpers do #Available in view, i believe :)
 
 end
 
+get '/:platform/index.php' do
+  puts params[:uid]
+  erb :index
+end
+
+
+get '/index.php' do
+  if params[:uid]
+    redirect "/browser/index.php?uid=#{params[:uid]}"
+  end
+  erb :index
+end
 
 get '/' do
-  erb :index
+  redirect '/index.php'
 end
 
 #not_found do

@@ -15,5 +15,6 @@ end if File.exist?(gemfile)
 
 require 'sinatra'
 require 'harvester'
+require 'configuration'
 
 run Sinatra::Application

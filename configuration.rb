@@ -1,14 +1,27 @@
 require 'yaml'
+require 'logger'
+
+APP_CONFIG = YAML.load(File.read("#{APP_ROOT}/environments.yml"))[settings.environment]
+APP_ENV = (ENV['RACK_ENV'] || 'development').to_sym
 
 set :root, APP_ROOT
 set :static, true
+set :environment, APP_ENV
 
-set :environment, (ENV['RACK_ENV'] || 'development').to_sym
-
-APP_CONFIG = YAML.load(File.read("#{APP_ROOT}/environments.yml"))[settings.environment]
+configure do
+  log_file = File.open("#{APP_ROOT}/log/#{APP_ENV}.log", 'a+')
+  log_file.sync = true 
+  logger = Logger.new(log_file)
+  logger.level = Logger::DEBUG
+  #STDOUT.reopen(log_file)  # Anton, this is for logfiles fans:)  no better solution currently
+  #STDERR.reopen(log_file)  # Uncomment those lines to see all the stuff in the logfile
+  set :logger, logger
+end
+def logger; settings.logger; end
 
 enable :logging
 enable :dump_errors
+
 
 # MongoDB configuration
 Mongoid.configure do |config|
