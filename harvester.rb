@@ -10,8 +10,13 @@ helpers do #Available in view, i believe :)
 end
 
 get '/:platform/index.php' do
-  puts params[:uid]
-  erb :index
+  @survey = Survey.find(:first, :conditions => {:code => params[:uid]})
+  logger.debug @survey.nil? ? 'not found' : @survey.short_stimulus
+  if @survey
+    erb :index
+  else
+    "Survey not found"
+  end
 end
 
 
@@ -19,11 +24,29 @@ get '/index.php' do
   if params[:uid]
     redirect "/browser/index.php?uid=#{params[:uid]}"
   end
+  @survey = Survey.new(:short_stimulus => 'dunno what')
   erb :index
 end
 
 get '/' do
   redirect '/index.php'
+end
+
+get '/create/:stimulus' do
+  @survey = Survey.new(
+    :user_id => 1,
+    :short_stimulus => params[:stimulus],
+    :created_at => DateTime.now,
+    :updated_at => DateTime.now,
+    :code => Time.now.to_i.to_s(31).upcase,
+    :action_token => "dildo#{Time.now.to_i}"
+  )
+  "Survey '#{@survey.short_stimulus}' #{@survey.save ? 'successfuly' : '<b>NOT</b>'} created"
+end
+
+get '/list' do
+  @surveys = Survey.all
+  @surveys.map{|s| "#{s.id} : #{s.short_stimulus} / #{s.code}" }.join('<br/>')
 end
 
 #not_found do

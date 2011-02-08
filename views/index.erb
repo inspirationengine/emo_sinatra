@@ -122,7 +122,7 @@ You are about to experience <span class="bold-text">e.mote</span>&#0153;, a new 
 
 					<div class="instruction-emote2">
 						<div class="stimulus-short">
-							Tell us how you felt about your most recent experience with  <span class="bold-text">Testing survey xml export</span>.
+							Tell us how you felt about your most recent experience with  <span class="bold-text"><%= @survey.short_stimulus %></span>.
 						</div> 
 					</div>
 					<div id="emote-picker" class="face-win" style="margin-top: 10px;">
@@ -141,7 +141,7 @@ You are about to experience <span class="bold-text">e.mote</span>&#0153;, a new 
 
 					<div class="instruction-emote">
 						<div id="intensity-stimulus" class="stimulus-short">
-							Just how <span id="current-face-name">&nbsp;</span> did the <br/> <span class="bold-text">Testing survey xml export</span> make you feel?
+							Just how <span id="current-face-name">&nbsp;</span> did the <br/> <span class="bold-text"><%= @survey.short_stimulus %></span> make you feel?
 						</div> 
 					</div>
 					
@@ -168,7 +168,7 @@ You are about to experience <span class="bold-text">e.mote</span>&#0153;, a new 
 					<div class="instruction-emote">
 						<div id="verbatim-stimulus">
 							<div id="verbatim-text">
-								You said your experience with <span class="bold-text">Testing survey xml export</span> made you feel 
+								You said your experience with <span class="bold-text"><%= @survey.short_stimulus %></span> made you feel
 								<span id="verbatim-face-name">&nbsp;</span>. Why?
 							</div>
 							<div id="verbatim-image">
