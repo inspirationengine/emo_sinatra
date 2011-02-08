@@ -1,0 +1,12 @@
+:development:
+  :mongo_host: localhost:27017
+  :mongo_database: emotes
+
+:staging:
+  :mongo_host: localhost:27017
+  :mongo_database: emotes
+
+:production:
+  :mongo_host: localhost:27017
+  :mongo_database: emotes_live
+
