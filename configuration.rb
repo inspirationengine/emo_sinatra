@@ -30,5 +30,6 @@ end
 # http://www.mongodb.org/display/DOCS/Connections
 MongoMapper.connection = Mongo::Connection.from_uri("mongodb://#{APP_CONFIG[:mongo_host]}")
 MongoMapper.database = APP_CONFIG[:mongo_database]
+MongoMapper.database.authenticate(APP_CONFIG[:mongo_login], APP_CONFIG[:mongo_pass])
 logger.debug MongoMapper.connection.inspect
 # MongoMapper.database.authenticate(ENV['mongodb_user'], ENV['mongodb_pass'])

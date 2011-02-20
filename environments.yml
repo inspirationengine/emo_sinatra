@@ -1,6 +1,8 @@
 :development:
-  :mongo_host: localhost:27017
+  :mongo_host: flame.mongohq.com:27049
   :mongo_database: emotes
+  :mongo_login: rubyriders
+  :mongo_pass: 134711
 
 :staging:
   :mongo_host: localhost:27017

@@ -32,6 +32,15 @@ class Survey
   key :public, Boolean, :default => false
   key :code, String, :index => true, :required => true
   key :action_token, String
+  key :survey_responses_count_cache
+  
   timestamps!
+  
+  many :survey_responses
+
+  def survey_responses_count # counter cache emu
+    update_attributes({:survey_responses_count_cache => survey_responses.count}) if read_attribute(:survey_responses_count_cache).nil?
+    self.survey_responses_count_cache
+  end
 
 end

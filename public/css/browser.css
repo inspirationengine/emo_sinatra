@@ -288,12 +288,12 @@ body{
 
 #intensity-bg2{
 	width: 396px;
-	margin-left: 424px;
+/*	margin-left: 424px; */
 	/*margin-top: -10px;*/
 	height: 0px;
 	position: absolute;
 	z-index: 1;
-	bottom: 26px;
+	bottom: 0px;
 	background: url('../images/browser/intensity_window_max.png') no-repeat left bottom; 
 }
 
